@@ -1,0 +1,38 @@
+<div ng-app="pizzaApp" ng-controller="pizzaController">
+    <div class="item">
+      <label for="cheesePizza">Cheese Pizza:</label>
+      <input type="number" id="cheesePizza" ng-model="cheesePizzaQuantity">
+    </div>
+  
+    <div class="item">
+      <label for="mexicanPizza">Mexican Pizza:</label>
+      <input type="number" id="mexicanPizza" ng-model="mexicanPizzaQuantity">
+    </div>
+  
+    <div class="item">
+      <label for="macaroniPizza">Macaroni Pizza:</label>
+      <input type="number" id="macaroniPizza" ng-model="macaroniPizzaQuantity">
+    </div>
+  
+    <div class="total">
+      Total Cost: {{ calculateTotalCost() }}
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script>
+    angular.module('pizzaApp', [])
+      .controller('pizzaController', function($scope) {
+        $scope.cheesePizzaPrice = 250;
+        $scope.mexicanPizzaPrice = 300;
+        $scope.macaroniPizzaPrice = 350;
+  
+        $scope.calculateTotalCost = function() {
+          var cheesePizzaCost = $scope.cheesePizzaQuantity * $scope.cheesePizzaPrice;
+          var mexicanPizzaCost = $scope.mexicanPizzaQuantity * $scope.mexicanPizzaPrice;
+          var macaroniPizzaCost = $scope.macaroniPizzaQuantity * $scope.macaroniPizzaPrice;
+  
+          return cheesePizzaCost + mexicanPizzaCost + macaroniPizzaCost;
+        };
+      });
+  </script>
+<a href="index.html">Home</a>
